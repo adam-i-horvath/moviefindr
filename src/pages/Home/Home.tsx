@@ -5,11 +5,17 @@ import { Typography } from '@mui/material';
 
 const Home = () => {
   const classes = useStyles();
-
+  const last_viewed =
+    localStorage.getItem('last_viewed') === null
+      ? null
+      : 'Last checked movie: ' + localStorage.getItem('last_viewed');
   return (
     <Box className={classes.root}>
       <TravelExploreIcon />
-      <Typography variant="h5">Welcome in the movie searching page!</Typography>
+      <Typography display="s" variant="h5">
+        Welcome in the movie searching page!
+      </Typography>
+      <Typography variant="h4">{last_viewed}</Typography>
     </Box>
   );
 };

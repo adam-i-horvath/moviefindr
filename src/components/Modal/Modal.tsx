@@ -3,26 +3,10 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import axios from 'axios';
-import { WikiTypes } from './Types';
-
-type Props = {
-  setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
-  title: string;
-  date: string;
-  image: string;
-  backdrop: string;
-};
-
-const style = {
-  position: 'absolute' as 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  maxWidth: '600px',
-  bgcolor: 'background.paper',
-  boxShadow: 12,
-  p: 5,
-};
+import { WikiTypes, Props } from './Types';
+import Button from '@mui/material/Button';
+import { style } from './Style';
+import { ImageListItem } from '@mui/material';
 
 const BasicModal: React.FC<Props> = (props) => {
   const [open] = React.useState(true);
@@ -43,7 +27,7 @@ const BasicModal: React.FC<Props> = (props) => {
           let { data } = await axios.get(
             'https://en.wikipedia.org/api/rest_v1/page/summary/' +
               props.title +
-              ' (2022 film)'
+              '_(film)'
           );
           setAlbums([data]);
         }
@@ -67,8 +51,10 @@ const BasicModal: React.FC<Props> = (props) => {
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
             {albums.map((el) => (
-              <Typography component={'span'} variant={'body2'} key={el.pageid}>
-                <img src={props.backdrop} alt="img" width="400px" />
+              <Box component={'span'} key={el.pageid}>
+                <ImageListItem>
+                  <img src={props.backdrop} alt="img" width="400px" />
+                </ImageListItem>
                 <Typography component={'span'} variant={'body2'}>
                   {el.title.normalized}
                 </Typography>
@@ -78,10 +64,20 @@ const BasicModal: React.FC<Props> = (props) => {
                 <Typography component={'span'} variant={'body2'}>
                   {el.description}
                 </Typography>
-                <Typography component={'span'} variant={'body2'}>
-                  <a href={el.content_urls.desktop.page}>Wikipedia</a>
-                </Typography>
-              </Typography>
+                <Button
+                  href={el.content_urls.desktop.page}
+                  target="_blank"
+                  variant="outlined"
+                >
+                  Wikipedia
+                </Button>
+                <Button
+                  href={'/related?' + props.title + '?' + props.id}
+                  variant="outlined"
+                >
+                  Related
+                </Button>
+              </Box>
             ))}
           </Typography>
         </Box>

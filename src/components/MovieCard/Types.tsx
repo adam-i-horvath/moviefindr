@@ -5,4 +5,6 @@ export type CardProps = {
   title: string;
   score: number;
   original: string;
+  id: number;
+  genrelist: string[];
 };

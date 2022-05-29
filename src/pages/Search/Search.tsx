@@ -1,13 +1,12 @@
 import React from 'react';
 import { useQuery, gql } from '@apollo/client';
 import MovieCard from '../../components/MovieCard/MovieCard';
-import Card from '@mui/material/Card';
-import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import { Movies, Props } from './Types';
 import Loading from '../../components/Loading/Loading';
 import NoResult from '../../components/NoResult/NoResult';
+import Typography from '@mui/material/Typography';
 
 const GET_MOVIE = gql`
   query SearchMovies($queryValue: String!) {
@@ -46,7 +45,8 @@ const SearchPage = (props: Props) => {
   if (data?.searchMovies.length === 0) return <NoResult />;
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box margin={2}>
+      <Typography variant="h4">Search results: </Typography>
       <Grid
         container
         spacing={1}
@@ -63,29 +63,16 @@ const SearchPage = (props: Props) => {
             movie.backdrop === null ? imgLogic : movie.backdrop.original;
           return (
             <div key={movie.id}>
-              <Card sx={{ width: 250, margin: 2, height: 500 }}>
-                <MovieCard
-                  name={movie.name}
-                  date={movie.releaseDate}
-                  img={imgLogic}
-                  title={movie.name}
-                  score={movie.score}
-                  original={imgOriginLogic}
-                />
-                <Typography
-                  variant="caption"
-                  color="text.secondary"
-                  align="center"
-                >
-                  {movie.genres.map((genre) => {
-                    return (
-                      <div key={genre.id}>
-                        <Typography>{genre.name}</Typography>
-                      </div>
-                    );
-                  })}
-                </Typography>
-              </Card>
+              <MovieCard
+                name={movie.name}
+                date={movie.releaseDate}
+                img={imgLogic}
+                title={movie.name}
+                score={movie.score}
+                original={imgOriginLogic}
+                id={movie.id}
+                genrelist={movie.genres.map((genre) => genre.name)}
+              />
             </div>
           );
         })}

@@ -7,6 +7,7 @@ import SearchPage from './pages/Search/Search';
 import { ThemeProvider } from '@mui/material/styles';
 import { theme } from './global/Style';
 import CssBaseline from '@mui/material/CssBaseline';
+import Related from './pages/Related/Related';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route index element={<Home />} />
         <Route path="about" element={<About />} />
         <Route path="search" element={<SearchPage movieTitle={''} />} />
+        <Route path="related" element={<Related movieTitle={''} />} />
       </Routes>
     </ThemeProvider>
   );

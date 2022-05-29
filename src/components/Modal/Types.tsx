@@ -31,3 +31,12 @@ export interface WikiTypes {
     lon: 0;
   };
 }
+
+export type Props = {
+  setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
+  title: string;
+  date: string;
+  image: string;
+  backdrop: string;
+  id: number;
+};

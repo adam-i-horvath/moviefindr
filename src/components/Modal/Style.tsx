@@ -1,0 +1,16 @@
+export const style = {
+  position: 'absolute' as 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  minWidth: '400px',
+  maxWidth: '600px',
+  bgcolor: 'background.paper',
+  boxShadow: 12,
+  p: 5,
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  flexDirection: 'column',
+  textAlign: 'justify',
+};

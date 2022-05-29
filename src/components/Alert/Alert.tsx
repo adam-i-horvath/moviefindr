@@ -1,14 +1,34 @@
-import Alert from '@mui/material/Alert';
-import AlertTitle from '@mui/material/AlertTitle';
-import Stack from '@mui/material/Stack';
+import * as React from 'react';
 
-export default function DescriptionAlerts() {
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert, { AlertProps } from '@mui/material/Alert';
+
+const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
+  props,
+  ref
+) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
+
+export default function CustomizedSnackbars() {
+  const [open, setOpen] = React.useState(true);
+
+  const handleClose = (
+    event?: React.SyntheticEvent | Event,
+    reason?: string
+  ) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+  };
+
   return (
-    <Stack sx={{ width: '100%' }} spacing={2}>
-      <Alert variant="filled" severity="warning">
-        <AlertTitle>Warning</AlertTitle>
-        Please fill the — <strong>input field!</strong>
+    <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+      <Alert onClose={handleClose} severity="warning" sx={{ width: '100%' }}>
+        Please fill <strong>the input field!</strong>
       </Alert>
-    </Stack>
+    </Snackbar>
   );
 }
