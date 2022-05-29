@@ -1,17 +1,17 @@
 import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { CardProps } from './Types';
-import moment from 'moment';
 import CardActionArea from '@mui/material/CardActionArea';
 import Card from '@mui/material/Card';
 import Rating from '@mui/material/Rating';
-import { Box } from '@mui/system';
+import { Box, minHeight } from '@mui/system';
 import Tooltip from '@mui/material/Tooltip';
-import Badge from '@mui/material/Badge';
+import Badge, { BadgeProps } from '@mui/material/Badge';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import BasicModal from '../Modal/Modal';
+import moment from 'moment';
+import styled from '@emotion/styled';
 
 export default function MediaCard(props: CardProps) {
   const [showModal, setShowModal] = React.useState<boolean>(false);
@@ -26,11 +26,23 @@ export default function MediaCard(props: CardProps) {
   };
 
   const navigate = useNavigate();
+
+  const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
+    '& .MuiBadge-badge': {
+      top: 4,
+      right: 30,
+      padding: '10px',
+    },
+  }));
+
   return (
     <Box padding={1}>
       <Tooltip title="Open">
-        <Badge badgeContent={props.score / 2} color="primary">
-          <Card sx={{ width: 200, minHeight: 500 }} onClick={handleClick}>
+        <StyledBadge
+          badgeContent={moment(props.date).utc().format('YYYY.MM.DD')}
+          color="primary"
+        >
+          <Card sx={{ width: 300, minHeight: 520 }} onClick={handleClick}>
             <CardActionArea>
               <Typography
                 padding={1}
@@ -45,7 +57,12 @@ export default function MediaCard(props: CardProps) {
               >
                 {props.name}
               </Typography>
-              <CardMedia component="img" image={props.img} alt="poster" />
+              <CardMedia
+                sx={{ height: 420 }}
+                component="img"
+                image={props.img}
+                alt="poster"
+              />
               <Box
                 sx={{
                   width: '100%',
@@ -65,19 +82,13 @@ export default function MediaCard(props: CardProps) {
                   readOnly
                 />
               </Box>
-              <Typography padding={1} variant="subtitle2">
-                Release date: {moment(props.date).utc().format('YYYY-MM-DD')}
-              </Typography>
               <Typography padding={1} variant="inherit">
                 Genre(s): {props.genrelist.join(', ')}
               </Typography>
               <Typography variant="body2" color="text.secondary"></Typography>
             </CardActionArea>
-            <Button size="large" onClick={handleClick}>
-              Details
-            </Button>
           </Card>
-        </Badge>
+        </StyledBadge>
       </Tooltip>
       {showModal ? (
         <BasicModal
