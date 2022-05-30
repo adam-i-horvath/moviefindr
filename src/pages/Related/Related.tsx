@@ -87,15 +87,25 @@ const Related = (props: Props) => {
         justifyContent="center"
       >
         {data?.movie.recommended.map((item) => {
+          const imgLogic =
+            item.backdrop === null
+              ? 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/660px-No-Image-Placeholder.svg.png?20200912122019'
+              : item.backdrop.original;
+
+          const urlLogic =
+            item.img === null
+              ? 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/660px-No-Image-Placeholder.svg.png?20200912122019'
+              : item.img.url;
+
           return (
             <div key={item.id}>
               <MovieCard
                 name={item.name}
                 date={item.releaseDate}
-                img={item.img.url}
+                img={urlLogic}
                 title={item.name}
                 score={item.score}
-                original={item.backdrop.original}
+                original={imgLogic}
                 id={item.id}
                 genrelist={item.genres.map((genre) => genre.name)}
               />

@@ -6,9 +6,11 @@ import { Typography } from '@mui/material';
 const Home = () => {
   const classes = useStyles();
   const last_viewed =
-    localStorage.getItem('last_viewed') === null
+    localStorage.getItem('apex_demo_last_viewed_name') === null
       ? null
-      : 'Last checked movie: ' + localStorage.getItem('last_viewed');
+      : 'Last checked movie: ' +
+        localStorage.getItem('apex_demo_last_viewed_name');
+
   return (
     <Box className={classes.root}>
       <TravelExploreIcon />

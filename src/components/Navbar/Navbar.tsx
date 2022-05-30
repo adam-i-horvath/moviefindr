@@ -95,13 +95,6 @@ const Navbar = () => {
                 >
                   Popular
                 </Button>
-                <Button
-                  onClick={handleCloseNavMenu}
-                  href="/about"
-                  sx={{ my: 2, color: 'black', display: 'block' }}
-                >
-                  About
-                </Button>
               </Menu>
             </Box>
             <VideocamIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
@@ -129,13 +122,6 @@ const Navbar = () => {
                 sx={{ my: 2, display: 'block' }}
               >
                 Popular
-              </Button>
-              <Button
-                onClick={handleCloseNavMenu}
-                href="/about"
-                sx={{ my: 2, display: 'block' }}
-              >
-                About
               </Button>
             </Box>
             <Box>

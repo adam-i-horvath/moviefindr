@@ -4,8 +4,7 @@ import { CardProps } from './Types';
 import CardActionArea from '@mui/material/CardActionArea';
 import Card from '@mui/material/Card';
 import Rating from '@mui/material/Rating';
-import { Box, minHeight } from '@mui/system';
-import Tooltip from '@mui/material/Tooltip';
+import { Box } from '@mui/system';
 import Badge, { BadgeProps } from '@mui/material/Badge';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -22,7 +21,7 @@ export default function MediaCard(props: CardProps) {
         ? '/search?' + props.name
         : '/related?' + props.name
     );
-    localStorage.setItem('last_viewed', props.name);
+    localStorage.setItem('apex_demo_last_viewed_name', props.name);
   };
 
   const navigate = useNavigate();
@@ -37,59 +36,56 @@ export default function MediaCard(props: CardProps) {
 
   return (
     <Box padding={1}>
-      <Tooltip title="Open">
-        <StyledBadge
-          badgeContent={moment(props.date).utc().format('YYYY.MM.DD')}
-          color="primary"
-        >
-          <Card sx={{ width: 300, minHeight: 520 }} onClick={handleClick}>
-            <CardActionArea>
-              <Typography
-                padding={1}
-                gutterBottom
-                variant="overline"
-                component="div"
-                sx={{
-                  position: 'absolute',
-                  width: '100%',
-                  backgroundColor: '#ffffff',
-                }}
-              >
-                {props.name}
+      <StyledBadge
+        badgeContent={moment(props.date).utc().format('YYYY.MM.DD')}
+        color="primary"
+      >
+        <Card sx={{ width: 300, minHeight: 520 }} onClick={handleClick}>
+          <CardActionArea>
+            <Typography
+              padding={1}
+              gutterBottom
+              variant="overline"
+              component="div"
+              sx={{
+                position: 'absolute',
+                width: '100%',
+                backgroundColor: '#ffffff',
+              }}
+            >
+              {props.name}
+            </Typography>
+            <CardMedia
+              sx={{ height: 420 }}
+              component="img"
+              image={props.img}
+              alt="poster"
+            />
+            <Box
+              sx={{
+                width: '100%',
+                backgroundColor: '#ffffff',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+              }}
+            >
+              <Typography padding={1} variant="subtitle2">
+                Rate: {props.score / 2}
               </Typography>
-              <CardMedia
-                sx={{ height: 420 }}
-                component="img"
-                image={props.img}
-                alt="poster"
+              <Rating
+                name="read-only"
+                value={props.score / 2}
+                precision={0.25}
+                readOnly
               />
-              <Box
-                sx={{
-                  width: '100%',
-                  backgroundColor: '#ffffff',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                }}
-              >
-                <Typography padding={1} variant="subtitle2">
-                  Rate: {props.score / 2}
-                </Typography>
-                <Rating
-                  name="read-only"
-                  value={props.score / 2}
-                  precision={0.25}
-                  readOnly
-                />
-              </Box>
-              <Typography padding={1} variant="inherit">
-                Genre(s): {props.genrelist.join(', ')}
-              </Typography>
-              <Typography variant="body2" color="text.secondary"></Typography>
-            </CardActionArea>
-          </Card>
-        </StyledBadge>
-      </Tooltip>
+            </Box>
+            <Typography padding={1} variant="inherit">
+              Genre(s): {props.genrelist.join(', ')}
+            </Typography>
+          </CardActionArea>
+        </Card>
+      </StyledBadge>
       {showModal ? (
         <BasicModal
           setShowModal={setShowModal}

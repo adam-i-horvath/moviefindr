@@ -1,7 +1,6 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar';
-import About from './pages/About/About';
 import Home from './pages/Home/Home';
 import SearchPage from './pages/Search/Search';
 import { ThemeProvider } from '@mui/material/styles';
@@ -16,7 +15,6 @@ function App() {
       <Navbar />
       <Routes>
         <Route index element={<Home />} />
-        <Route path="about" element={<About />} />
         <Route path="search" element={<SearchPage movieTitle={''} />} />
         <Route path="related" element={<Related movieTitle={''} />} />
       </Routes>
