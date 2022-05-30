@@ -2,11 +2,14 @@ import { useQuery } from '@apollo/client';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
+
 import Loading from '../../components/Loading/Loading';
 import MovieCard from '../../components/MovieCard/MovieCard';
 import NoResult from '../../components/NoResult/NoResult';
+
 import { GET_RELATED } from './Fragments';
 import { Movies, Props } from './Schema';
+
 import { searchedMovie } from '../../global/Resolver';
 
 const idFilter = searchedMovie;

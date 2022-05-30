@@ -1,13 +1,16 @@
 import { Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar/Navbar';
-import Home from './pages/Home/Home';
-import SearchPage from './pages/Search/Search';
-import { ThemeProvider } from '@mui/material/styles';
-import { theme } from './global/Style';
+
 import CssBaseline from '@mui/material/CssBaseline';
+import { ThemeProvider } from '@mui/material/styles';
+
+import Home from './pages/Home/Home';
 import Related from './pages/Related/Related';
+import SearchPage from './pages/Search/Search';
 import LastViewed from './pages/LastViewed/LastViewed';
 
+import Navbar from './components/Navbar/Navbar';
+
+import { theme } from './global/Style';
 function App() {
   return (
     <ThemeProvider theme={theme}>

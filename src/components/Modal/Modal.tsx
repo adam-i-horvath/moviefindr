@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import axios from 'axios';
-import { WikiTypes, Props } from './Schema';
 import Button from '@mui/material/Button';
-import { style } from './Style';
 import CardMedia from '@mui/material/CardMedia';
 import Paper from '@mui/material/Paper';
 import Container from '@mui/material/Container';
 import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
+
+import { WikiTypes, Props } from './Schema';
 import Loading from '../Loading/Loading';
+import { style } from './Style';
 
 const BasicModal: React.FC<Props> = (props) => {
   const [open] = React.useState(true);

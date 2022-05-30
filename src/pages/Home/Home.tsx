@@ -1,7 +1,8 @@
 import Box from '@mui/material/Box';
-import { useStyles } from './Style';
 import TravelExploreIcon from '@mui/icons-material/TravelExplore';
 import { Typography } from '@mui/material';
+
+import { useStyles } from './Style';
 
 const Home = () => {
   const classes = useStyles();

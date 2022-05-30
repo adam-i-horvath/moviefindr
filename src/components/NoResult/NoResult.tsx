@@ -1,5 +1,5 @@
-import { useStyles } from './Style';
 import { Box } from '@mui/material';
+import { useStyles } from './Style';
 
 const NoResult = () => {
   const classes = useStyles();

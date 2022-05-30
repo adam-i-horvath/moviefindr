@@ -1,16 +1,19 @@
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { CardProps } from './Schema';
 import CardActionArea from '@mui/material/CardActionArea';
 import Card from '@mui/material/Card';
 import Rating from '@mui/material/Rating';
 import { Box } from '@mui/system';
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import BasicModal from '../Modal/Modal';
+
 import moment from 'moment';
-import { LocalStorage } from '../LocalStorage/LocalStorage';
+
+import BasicModal from '../Modal/Modal';
+import { CardProps } from './Schema';
 import { StyledBadge } from './Style';
+import { LocalStorage } from '../LocalStorage/LocalStorage';
 
 export default function MediaCard(props: CardProps) {
   const [showModal, setShowModal] = React.useState<boolean>(false);

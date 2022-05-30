@@ -1,13 +1,14 @@
-import React from 'react';
 import { useQuery } from '@apollo/client';
-import MovieCard from '../../components/MovieCard/MovieCard';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import { Movies, Props } from './Schema';
+import Typography from '@mui/material/Typography';
+
+import MovieCard from '../../components/MovieCard/MovieCard';
 import Loading from '../../components/Loading/Loading';
 import NoResult from '../../components/NoResult/NoResult';
-import Typography from '@mui/material/Typography';
+import { Movies, Props } from './Schema';
 import { GET_MOVIE } from './Fragments';
+
 import { queryValue } from '../../global/Resolver';
 
 const SearchPage = (props: Props) => {

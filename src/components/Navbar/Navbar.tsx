@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -10,7 +11,9 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import SearchIcon from '@mui/icons-material/Search';
 import VideocamIcon from '@mui/icons-material/Videocam';
+
 import BasicAlerts from '../Alert/Alert';
+
 import {
   Search,
   SearchContainer,
