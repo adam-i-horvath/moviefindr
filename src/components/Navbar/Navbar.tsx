@@ -90,10 +90,10 @@ const Navbar = () => {
               >
                 <Button
                   onClick={handleCloseNavMenu}
-                  href="#"
+                  href="lastviewed"
                   sx={{ my: 2, color: 'black', display: 'block' }}
                 >
-                  Popular
+                  last viewed
                 </Button>
               </Menu>
             </Box>
@@ -118,10 +118,10 @@ const Navbar = () => {
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
               <Button
                 onClick={handleCloseNavMenu}
-                href="#"
+                href="/lastviewed"
                 sx={{ my: 2, display: 'block' }}
               >
-                Popular
+                last viewed
               </Button>
             </Box>
             <Box>

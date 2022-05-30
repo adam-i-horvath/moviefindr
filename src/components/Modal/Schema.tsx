@@ -1,4 +1,4 @@
-export interface WikiTypes {
+export type WikiTypes = {
   content_urls: {
     desktop: {
       page: string;
@@ -30,7 +30,7 @@ export interface WikiTypes {
     lat: 0;
     lon: 0;
   };
-}
+};
 
 export type Props = {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;

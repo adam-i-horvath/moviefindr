@@ -1,39 +1,14 @@
 import React from 'react';
-import { useQuery, gql } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 import MovieCard from '../../components/MovieCard/MovieCard';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import { Movies, Props } from './Types';
+import { Movies, Props } from './Schema';
 import Loading from '../../components/Loading/Loading';
 import NoResult from '../../components/NoResult/NoResult';
 import Typography from '@mui/material/Typography';
-
-const GET_MOVIE = gql`
-  query SearchMovies($queryValue: String!) {
-    searchMovies(query: $queryValue) {
-      id
-      name
-      img: poster {
-        url: custom(size: "w185_and_h278_bestv2")
-      }
-      backdrop {
-        original
-      }
-
-      score
-      releaseDate
-      genres {
-        id
-        name
-      }
-    }
-  }
-`;
-
-const queryValue = window.location.href
-  .split('?')
-  .pop()
-  ?.replaceAll('%20', ' ');
+import { GET_MOVIE } from './Fragments';
+import { queryValue } from '../../global/Resolver';
 
 const SearchPage = (props: Props) => {
   const { error, data, loading } = useQuery<Movies>(GET_MOVIE, {

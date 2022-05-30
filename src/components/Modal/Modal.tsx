@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import axios from 'axios';
-import { WikiTypes, Props } from './Types';
+import { WikiTypes, Props } from './Schema';
 import Button from '@mui/material/Button';
 import { style } from './Style';
 import CardMedia from '@mui/material/CardMedia';
@@ -24,18 +24,12 @@ const BasicModal: React.FC<Props> = (props) => {
 
       try {
         let { data } = await axios.get(
-          'https://en.wikipedia.org/api/rest_v1/page/summary/' + props.title
+          process.env.REACT_APP_WIKIPEDIA_URL + props.title
         );
+
         setWiki([data]);
       } catch (err) {
-        if (err.response.status === 404) {
-          let { data } = await axios.get(
-            'https://en.wikipedia.org/api/rest_v1/page/summary/' +
-              props.title +
-              '_(film)'
-          );
-          setWiki([data]);
-        }
+        console.log(err);
       }
 
       setLoading(false);

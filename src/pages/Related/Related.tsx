@@ -1,74 +1,18 @@
-import { useQuery, gql } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Loading from '../../components/Loading/Loading';
 import MovieCard from '../../components/MovieCard/MovieCard';
 import NoResult from '../../components/NoResult/NoResult';
+import { GET_RELATED } from './Fragments';
+import { Movies, Props } from './Schema';
+import { searchedMovie } from '../../global/Resolver';
 
-const searchedMovie = window.location.href.split('?').pop();
-
-type Movies = {
-  movie: {
-    id: number;
-    name: string;
-    recommended: {
-      id: number;
-      name: string;
-      releaseDate: string;
-      backdrop: {
-        original: string;
-      };
-      score: number;
-      img: { url: string };
-      genres: [Genre];
-      poster: {
-        large: string;
-      };
-    }[];
-  };
-};
-
-type Genre = {
-  id: number;
-  name: string;
-};
-
-export type Props = {
-  movieTitle: string;
-};
-
-const GET_MOVIE = gql`
-  query getMovie($idFilter: ID!) {
-    movie(id: $idFilter) {
-      id
-      name
-      recommended {
-        id
-        name
-        releaseDate
-        backdrop {
-          original
-        }
-        score
-        img: poster {
-          url: custom(size: "w185_and_h278_bestv2")
-        }
-        genres {
-          id
-          name
-        }
-        poster {
-          large
-        }
-      }
-    }
-  }
-`;
 const idFilter = searchedMovie;
 
 const Related = (props: Props) => {
-  const { error, data, loading } = useQuery<Movies>(GET_MOVIE, {
+  const { error, data, loading } = useQuery<Movies>(GET_RELATED, {
     variables: { idFilter },
   });
 

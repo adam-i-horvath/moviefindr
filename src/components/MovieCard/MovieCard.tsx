@@ -1,38 +1,30 @@
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { CardProps } from './Types';
+import { CardProps } from './Schema';
 import CardActionArea from '@mui/material/CardActionArea';
 import Card from '@mui/material/Card';
 import Rating from '@mui/material/Rating';
 import { Box } from '@mui/system';
-import Badge, { BadgeProps } from '@mui/material/Badge';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import BasicModal from '../Modal/Modal';
 import moment from 'moment';
-import styled from '@emotion/styled';
+import { LocalStorage } from '../LocalStorage/LocalStorage';
+import { StyledBadge } from './Style';
 
 export default function MediaCard(props: CardProps) {
   const [showModal, setShowModal] = React.useState<boolean>(false);
   const handleClick = () => {
+    LocalStorage(props);
     setShowModal(true);
     navigate(
       window.location.pathname === '/search'
         ? '/search?' + props.name
         : '/related?' + props.name
     );
-    localStorage.setItem('apex_demo_last_viewed_name', props.name);
   };
 
   const navigate = useNavigate();
-
-  const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
-    '& .MuiBadge-badge': {
-      top: 4,
-      right: 30,
-      padding: '10px',
-    },
-  }));
 
   return (
     <Box padding={1}>
