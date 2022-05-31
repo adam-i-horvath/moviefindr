@@ -79,7 +79,7 @@ const Navbar = () => {
                 textDecoration: 'none',
               }}
             >
-              movify
+              moviefindr
             </Typography>
 
             <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -93,31 +93,20 @@ const Navbar = () => {
               >
                 <Button
                   onClick={handleCloseNavMenu}
+                  href="/"
+                  sx={{ my: 2, display: 'block' }}
+                >
+                  home
+                </Button>
+                <Button
+                  onClick={handleCloseNavMenu}
                   href="lastviewed"
-                  sx={{ my: 2, color: 'black', display: 'block' }}
+                  sx={{ my: 2, display: 'block' }}
                 >
                   last viewed
                 </Button>
               </Menu>
             </Box>
-            <VideocamIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
-            <Typography
-              variant="button"
-              noWrap
-              component="a"
-              href="/"
-              sx={{
-                mr: 2,
-                display: { xs: 'flex', md: 'none' },
-                flexGrow: 1,
-                fontWeight: 700,
-                letterSpacing: '.3rem',
-                color: 'inherit',
-                textDecoration: 'none',
-              }}
-            >
-              movify
-            </Typography>
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
               <Button
                 onClick={handleCloseNavMenu}
