@@ -94,10 +94,10 @@ const BasicModal: React.FC<Props> = (props) => {
                       Wikipedia
                     </Button>
                     <Button
-                      href={'/rmovie_modalated?' + props.title + '?' + props.id}
+                      href={'/related?' + props.title + '?' + props.id}
                       variant="contained"
                     >
-                      Rmovie_modalated <ArrowCircleRightIcon />
+                      Related <ArrowCircleRightIcon />
                     </Button>
                   </Container>
                   <Typography component={'span'} variant={'body2'}>
