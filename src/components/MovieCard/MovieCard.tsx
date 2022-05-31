@@ -17,17 +17,20 @@ import { LocalStorage } from '../LocalStorage/LocalStorage';
 
 export default function MediaCard(props: CardProps) {
   const [showModal, setShowModal] = React.useState<boolean>(false);
+
+  const navigate = useNavigate();
+
   const handleClick = () => {
     LocalStorage(props);
+
     setShowModal(true);
+
     navigate(
       window.location.pathname === '/search'
         ? '/search?' + props.name
         : '/related?' + props.name
     );
   };
-
-  const navigate = useNavigate();
 
   return (
     <Box padding={1}>
