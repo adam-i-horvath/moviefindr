@@ -12,6 +12,8 @@ import { Movies, Props } from './Schema';
 
 import { searchedMovie } from '../../global/Resolver';
 
+import noimage from '../../assets/img/no_image.png';
+
 const idFilter = searchedMovie;
 
 const Related = (props: Props) => {
@@ -35,14 +37,9 @@ const Related = (props: Props) => {
       >
         {data?.movie.recommended.map((item) => {
           const imgLogic =
-            item.backdrop === null
-              ? 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/660px-No-Image-Placeholder.svg.png?20200912122019'
-              : item.backdrop.original;
+            item.backdrop === null ? noimage : item.backdrop.original;
 
-          const urlLogic =
-            item.img === null
-              ? 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/660px-No-Image-Placeholder.svg.png?20200912122019'
-              : item.img.url;
+          const urlLogic = item.img === null ? noimage : item.img.url;
 
           return (
             <div key={item.id}>

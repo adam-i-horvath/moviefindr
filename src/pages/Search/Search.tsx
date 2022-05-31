@@ -11,6 +11,8 @@ import { GET_MOVIE } from './Fragments';
 
 import { queryValue } from '../../global/Resolver';
 
+import noimage from '../../assets/img/no_image.png';
+
 const SearchPage = (props: Props) => {
   const { error, data, loading } = useQuery<Movies>(GET_MOVIE, {
     variables: { queryValue },
@@ -31,10 +33,7 @@ const SearchPage = (props: Props) => {
         justifyContent="center"
       >
         {data?.searchMovies.map((movie) => {
-          const imgLogic =
-            movie.img === null
-              ? 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/660px-No-Image-Placeholder.svg.png?20200912122019'
-              : movie.img.url;
+          const imgLogic = movie.img === null ? noimage : movie.img.url;
           const imgOriginLogic =
             movie.backdrop === null ? imgLogic : movie.backdrop.original;
           return (
